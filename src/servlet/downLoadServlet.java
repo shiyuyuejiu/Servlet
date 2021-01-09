@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @WebServlet("/photoDL")
 public class downLoadServlet extends HttpServlet {
@@ -24,7 +25,8 @@ public class downLoadServlet extends HttpServlet {
         FileInputStream fileInputStream = new FileInputStream(path);
         //获取到文件名,路径在电脑上保存是\\形式的。
         String filename = path.substring(path.lastIndexOf("\\" + 1));
-        //设置消息头，告诉浏览器，我要下载1.png这个图片
+        //设置消息头，告诉浏览器，我要下载1.png这个图片,并设置URL编码为UTF-8
+        resp.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"));
         resp.setHeader("Content-Disposition","attachment;filename="+filename);
         //把读取到的资源写给浏览器
         int len = 0;
