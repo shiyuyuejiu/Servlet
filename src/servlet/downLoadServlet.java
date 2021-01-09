@@ -19,7 +19,7 @@ public class downLoadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取到资源的路径
-        String path = this.getServletContext().getRealPath("/jpg/1.jpg");
+        String path = this.getServletContext().getRealPath("/jpg/微软壁纸.png");
         //读取资源
         FileInputStream fileInputStream = new FileInputStream(path);
         //获取到文件名,路径在电脑上保存是\\形式的。
